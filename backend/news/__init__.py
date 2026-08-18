@@ -1,0 +1,1 @@
+# Farmer News package init
