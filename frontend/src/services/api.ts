@@ -10,7 +10,7 @@ import {
   LanguageCode
 } from '../types';
 
-const API_BASE = '/api';
+const API_BASE = 'https://hv2026-0051-vortex-backend.onrender.com/api';
 
 function getAuthHeader(): Record<string, string> {
   const token = localStorage.getItem('agricare_token');
