@@ -42,7 +42,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { id: 'market-prices', label: 'Market Prices', icon: TrendingUp },
     { id: 'assistant', label: 'AI Assistant', icon: MessageSquare, badge: 'Voice' },
     { id: 'history', label: 'Crop History', icon: History },
-    { id: 'news', label: 'Knowledge Center', icon: Newspaper },
+    { id: 'news', label: 'Market News', icon: Newspaper },
     { id: 'resources', label: 'Farm Resources', icon: Tractor },
     { id: 'profile', label: 'My Profile', icon: UserCircle },
   ];

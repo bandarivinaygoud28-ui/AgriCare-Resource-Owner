@@ -108,9 +108,20 @@ export interface TranslationDictionary {
   // Weather
   weatherHeader: string;
   weatherSubtitle: string;
+  searchFarmLocation: string;
+  searchLocationPlaceholder: string;
+  useCurrentLocation: string;
+  refreshWeather: string;
   feelsLike: string;
   humidity: string;
   windSpeed: string;
+  rainfall: string;
+  cloudCoverage: string;
+  cropRiskModel: string;
+  weatherUpdated: string;
+  locatingGps: string;
+  locationNotFound: string;
+  weatherFetchError: string;
   sprayingAdvisory: string;
   diseaseRiskLevel: string;
   forecast5Day: string;
@@ -118,7 +129,15 @@ export interface TranslationDictionary {
   // News
   newsHeader: string;
   newsSubtitle: string;
+  searchNewsPlaceholder: string;
+  refreshNews: string;
+  readFullNews: string;
+  newsUpdated: string;
+  newsError: string;
+  showingTailoredNews: string;
+  allIndiaNews: string;
   newsCategories: Record<string, string>;
+  newsFilters: Record<string, string>;
   readMore: string;
 
   // Farm Resources
@@ -248,25 +267,58 @@ export const translations: Record<LanguageCode, TranslationDictionary> = {
 
     weatherHeader: "Agricultural Weather & Risk",
     weatherSubtitle: "Real-time agro-meteorological advisories, disease risks, and spraying windows",
+    searchFarmLocation: "Search Farm Location",
+    searchLocationPlaceholder: "Search village, town, city, district, state (e.g., Kolar, Karimnagar)...",
+    useCurrentLocation: "Use My Current Location",
+    refreshWeather: "Refresh Weather",
     feelsLike: "Feels like",
     humidity: "Relative Humidity",
     windSpeed: "Wind Speed",
+    rainfall: "Rainfall / Precipitation",
+    cloudCoverage: "Cloud Coverage",
+    cropRiskModel: "Crop Risk Model",
+    weatherUpdated: "Updated at",
+    locatingGps: "Locating your farm via GPS...",
+    locationNotFound: "Location not found. Please enter a valid village, town, city, or district.",
+    weatherFetchError: "Unable to load live weather. Please check connection and refresh.",
     sprayingAdvisory: "Chemical Spraying Advisory",
     diseaseRiskLevel: "Weather-Induced Disease Risk",
     forecast5Day: "5-Day Agricultural Forecast",
 
-    newsHeader: "Farmer News",
-    newsSubtitle: "Latest government schemes, agricultural updates, and modern farming technologies",
+    newsHeader: "Agricultural Market News",
+    newsSubtitle: "Real-time mandi arrivals, MSP procurement, commodity prices, and policy updates for Indian farmers",
+    searchNewsPlaceholder: "Search agricultural news (e.g. Paddy, Onion, Maize, MSP, Export, Tomato)...",
+    refreshNews: "Refresh News",
+    readFullNews: "Read Full News",
+    newsUpdated: "Last updated",
+    newsError: "Unable to fetch the latest market news. Please try again.",
+    showingTailoredNews: "Prioritizing market news for",
+    allIndiaNews: "All India Agricultural Markets",
     newsCategories: {
-      "All": "All News",
-      "Government Schemes": "Government Schemes",
-      "New Farming Technologies": "New Technologies",
-      "Weather & Agriculture Alerts": "Weather Alerts",
-      "Fertilizer & Seed Updates": "Fertilizers & Seeds",
-      "Market Updates": "Market Updates",
-      "Crop & Farming Updates": "Crop Updates"
+      "All": "All Topics",
+      "🌾 Paddy / Rice": "🌾 Paddy / Rice",
+      "🌽 Maize": "🌽 Maize",
+      "🧅 Onion": "🧅 Onion",
+      "🥔 Potato": "🥔 Potato",
+      "🍅 Tomato": "🍅 Tomato",
+      "🌶️ Chilli": "🌶️ Chilli",
+      "🫘 Pulses": "🫘 Pulses",
+      "🍬 Sugar": "🍬 Sugar",
+      "🌻 Oilseeds": "🌻 Oilseeds",
+      "📈 Mandi / Commodity Market": "📈 Mandi / Commodity Market",
+      "🏛️ MSP / Government Procurement": "🏛️ MSP / Government Procurement",
+      "🚜 Agriculture Policies": "🚜 Agriculture Policies"
     },
-    readMore: "Read Full Article →",
+    newsFilters: {
+      "All": "All News",
+      "Mandi": "Mandi",
+      "Crop Prices": "Crop Prices",
+      "MSP": "MSP",
+      "Government": "Government",
+      "Export/Import": "Export/Import",
+      "Weather & Agriculture": "Weather & Agriculture"
+    },
+    readMore: "Read Summary",
 
     resourcesHeader: "Farm Resources & Booking",
     resourcesSubtitle: "Rent certified tractors, harvesters, JCBs, and precision drone spraying services",
@@ -398,25 +450,58 @@ export const translations: Record<LanguageCode, TranslationDictionary> = {
 
     weatherHeader: "వ్యవసాయ వాతావరణం & సూచనలు",
     weatherSubtitle: "వర్షపాతం, తేమ మరియు మందులు పిచికారీ చేయడానికి అనుకూల సమయాలు",
+    searchFarmLocation: "వ్యవసాయ స్థలాన్ని శోధించండి",
+    searchLocationPlaceholder: "గ్రామం, పట్టణం, నగరం, జిల్లా లేదా రాష్ట్రం శోధించండి...",
+    useCurrentLocation: "నా ప్రస్తుత లొకేషన్ ఉపయోగించండి",
+    refreshWeather: "వాతావరణాన్ని రిఫ్రెష్ చేయండి",
     feelsLike: "అనిపించే ఉష్ణోగ్రత",
     humidity: "గాలిలో తేమ",
     windSpeed: "గాలి వేగం",
+    rainfall: "వర్షపాతం",
+    cloudCoverage: "మేఘాల కవరేజ్",
+    cropRiskModel: "పంట తెగులు మోడల్",
+    weatherUpdated: "నవీకరణ సమయం",
+    locatingGps: "GPS ద్వారా లొకేషన్ గుర్తిస్తోంది...",
+    locationNotFound: "స్థానం కనుగొనబడలేదు. దయచేసి సరైన గ్రామం లేదా జిల్లా పేరును శోధించండి.",
+    weatherFetchError: "వాతావరణ సమాచారం పొందలేకపోయాము. దయచేసి మళ్లీ ప్రయత్నించండి.",
     sprayingAdvisory: "మందుల పిచికారీ అనుకూలత",
     diseaseRiskLevel: "వాతావరణ తెగులు ప్రమాదం",
     forecast5Day: "5 రోజుల వాతావరణ అంచనా",
 
-    newsHeader: "రైతు వార్తలు",
-    newsSubtitle: "ప్రభుత్వ పథకాలు, తాజా వ్యవసాయ సమాచారం మరియు ఆధునిక సాంకేతికతలు",
+    newsHeader: "వ్యవసాయ మార్కెట్ వార్తలు",
+    newsSubtitle: "దేశవ్యాప్త వ్యవసాయ మార్కెట్లు, మద్దతు ధరలు (MSP), ధరల హెచ్చుతగ్గులు మరియు ప్రభుత్వ విధానాలు",
+    searchNewsPlaceholder: "వ్యవసాయ వార్తలను శోధించండి (వరి, ఉల్లి, మొక్కజొన్న, టమాటా, MSP)...",
+    refreshNews: "వార్తలను రిఫ్రెష్ చేయండి",
+    readFullNews: "పూర్తి వార్త చదవండి",
+    newsUpdated: "చివరిగా నవీకరించబడింది",
+    newsError: "తాజా మార్కెట్ వార్తలను పొందలేకపోయాము. దయచేసి మళ్లీ ప్రయత్నించండి.",
+    showingTailoredNews: "ప్రాంతీయ మార్కెట్ వార్తలు",
+    allIndiaNews: "జాతీయ వ్యవసాయ మార్కెట్లు",
     newsCategories: {
-      "All": "అన్ని వార్తలు",
-      "Government Schemes": "ప్రభుత్వ పథకాలు",
-      "New Farming Technologies": "ఆధునిక టెక్నాలజీ",
-      "Weather & Agriculture Alerts": "వాతావరణ హెచ్చరికలు",
-      "Fertilizer & Seed Updates": "ఎరువులు & విత్తనాలు",
-      "Market Updates": "మార్కెట్ సమాచారం",
-      "Crop & Farming Updates": "పంటల సమాచారం"
+      "All": "అన్ని విభాగాలు",
+      "🌾 Paddy / Rice": "🌾 వరి / ధాన్యం",
+      "🌽 Maize": "🌽 మొక్కజొన్న",
+      "🧅 Onion": "🧅 ఉల్లిపాయ",
+      "🥔 Potato": "🥔 బంగాళాదుంప",
+      "🍅 Tomato": "🍅 టమాటా",
+      "🌶️ Chilli": "🌶️ మిర్చి",
+      "🫘 Pulses": "🫘 పప్పుధాన్యాలు",
+      "🍬 Sugar": "🍬 చెరకు / చక్కెర",
+      "🌻 Oilseeds": "🌻 నూనెగింజలు",
+      "📈 Mandi / Commodity Market": "📈 మార్కెట్ యార్డులు / మండి",
+      "🏛️ MSP / Government Procurement": "🏛️ మద్దతు ధర (MSP) సేకరణ",
+      "🚜 Agriculture Policies": "🚜 వ్యవసాయ విధానాలు & పథకాలు"
     },
-    readMore: "పూర్తి వివరాలు చదవండి →",
+    newsFilters: {
+      "All": "అన్ని వార్తలు",
+      "Mandi": "మండి ధరలు",
+      "Crop Prices": "పంటల ధరలు",
+      "MSP": "మద్దతు ధర (MSP)",
+      "Government": "ప్రభుత్వ పథకాలు",
+      "Export/Import": "ఎగుమతి/దిగుమతి",
+      "Weather & Agriculture": "వాతావరణం & వ్యవసాయం"
+    },
+    readMore: "సారాంశం చూడండి",
 
     resourcesHeader: "వ్యవసాయ యంత్రాలు & బుకింగ్",
     resourcesSubtitle: "ట్రాక్టర్లు, హార్వెస్టర్లు, జేసీబీలు మరియు డ్రోన్ స్ప్రేయింగ్ అద్దెకు బుక్ చేసుకోండి",
@@ -548,25 +633,58 @@ export const translations: Record<LanguageCode, TranslationDictionary> = {
 
     weatherHeader: "कृषि मौसम एवं रोग जोखिम",
     weatherSubtitle: "वास्तविक समय मौसम सलाह, रोग जोखिम और कीटनाशक छिड़काव समय",
+    searchFarmLocation: "खेत का स्थान खोजें",
+    searchLocationPlaceholder: "गाँव, कस्बा, शहर, जिला या राज्य खोजें...",
+    useCurrentLocation: "मेरी वर्तमान लोकेशन का उपयोग करें",
+    refreshWeather: "मौसम रिफ्रेश करें",
     feelsLike: "महसूस तापमान",
     humidity: "हवा में नमी",
     windSpeed: "हवा की गति",
+    rainfall: "वर्षा / वर्षण",
+    cloudCoverage: "बादलों का आवरण",
+    cropRiskModel: "फसल जोखिम मॉडल",
+    weatherUpdated: "अपडेट समय",
+    locatingGps: "GPS द्वारा स्थान खोजा जा रहा है...",
+    locationNotFound: "स्थान नहीं मिला। कृपया सही गाँव, शहर या जिले का नाम दर्ज करें।",
+    weatherFetchError: "मौसम डेटा लोड नहीं हो सका। कृपया पुनः प्रयास करें।",
     sprayingAdvisory: "कीटनाशक छिड़काव सलाह",
     diseaseRiskLevel: "मौसम जनित रोग जोखिम",
     forecast5Day: "5-दिवसीय कृषि मौसम पूर्वानुमान",
 
-    newsHeader: "किसान समाचार",
-    newsSubtitle: "सरकारी योजनाएं, कृषि अपडेट और आधुनिक खेती तकनीक",
+    newsHeader: "कृषि मंडी एवं बाजार समाचार",
+    newsSubtitle: "देश भर की मंडियों के भाव, MSP खरीद, आयात-निर्यात और सरकारी कृषि नीतियां",
+    searchNewsPlaceholder: "कृषि समाचार खोजें (धान, प्याज, मक्का, टमाटर, MSP, निर्यात)...",
+    refreshNews: "समाचार रिफ्रेश करें",
+    readFullNews: "पूरी खबर पढ़ें",
+    newsUpdated: "अंतिम अपडेट समय",
+    newsError: "ताजा मंडी समाचार प्राप्त करने में असमर्थ। कृपया पुनः प्रयास करें।",
+    showingTailoredNews: "प्राथमिकता मंडी समाचार",
+    allIndiaNews: "अखिल भारतीय कृषि बाजार",
     newsCategories: {
-      "All": "सभी समाचार",
-      "Government Schemes": "सरकारी योजनाएं",
-      "New Farming Technologies": "नई तकनीक",
-      "Weather & Agriculture Alerts": "मौसम अलर्ट",
-      "Fertilizer & Seed Updates": "उर्वरक एवं बीज",
-      "Market Updates": "मंडी अपडेट",
-      "Crop & Farming Updates": "फसल अपडेट"
+      "All": "सभी विषय",
+      "🌾 Paddy / Rice": "🌾 धान / चावल",
+      "🌽 Maize": "🌽 मक्का",
+      "🧅 Onion": "🧅 प्याज",
+      "🥔 Potato": "🥔 आलू",
+      "🍅 Tomato": "🍅 टमाटर",
+      "🌶️ Chilli": "🌶️ मिर्च",
+      "🫘 Pulses": "🫘 दलहन / दालें",
+      "🍬 Sugar": "🍬 गन्ना / चीनी",
+      "🌻 Oilseeds": "🌻 तिलहन",
+      "📈 Mandi / Commodity Market": "📈 मंडी एवं कमोडिटी बाजार",
+      "🏛️ MSP / Government Procurement": "🏛️ न्यूनतम समर्थन मूल्य (MSP)",
+      "🚜 Agriculture Policies": "🚜 कृषि नीतियां एवं योजनाएं"
     },
-    readMore: "पूरी खबर पढ़ें →",
+    newsFilters: {
+      "All": "सभी समाचार",
+      "Mandi": "मंडी भाव",
+      "Crop Prices": "फसल कीमतें",
+      "MSP": "एमएसपी (MSP)",
+      "Government": "सरकारी नीतियां",
+      "Export/Import": "निर्यात/आयात",
+      "Weather & Agriculture": "मौसम एवं कृषि"
+    },
+    readMore: "संक्षेप देखें",
 
     resourcesHeader: "कृषि संसाधन एवं बुकिंग",
     resourcesSubtitle: "ट्रैक्टर, हार्वेस्टर, जेसीबी और ड्रोन छिड़काव सेवा किराए पर लें",

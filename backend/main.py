@@ -18,13 +18,14 @@ from ai.prediction import generate_prediction
 from market.market_service import get_market_prices, get_market_price_history
 from weather.weather_service import get_weather_data
 from assistant.assistant_service import process_assistant_query
-from news.news_service import get_farmer_news
+from news.news_service import fetch_live_agri_news, get_farmer_news
 from resources.resource_service import (
     get_resources_list,
     check_resource_availability,
     create_booking,
     get_farmer_bookings
 )
+from location.location_service import search_locations, reverse_geocode, detect_ip_location
 
 # Initialize database tables
 Base.metadata.create_all(bind=engine)
@@ -482,12 +483,39 @@ def get_farmer_advisory(crop: str = Query("Tomato")):
 
 
 # ============================================================
-# 4. WEATHER ENDPOINT
+# 4. LOCATION & GEOCODING ENDPOINTS
+# ============================================================
+
+@app.get("/api/location/search")
+def location_search_endpoint(
+    q: Optional[str] = Query(None, alias="query"),
+    query: Optional[str] = Query(None),
+    limit: int = Query(8, ge=1, le=20)
+):
+    search_term = q or query or ""
+    return search_locations(query=search_term, limit=limit)
+
+
+@app.get("/api/location/reverse")
+def reverse_geocode_endpoint(
+    lat: float = Query(...),
+    lon: float = Query(...)
+):
+    return reverse_geocode(lat=lat, lon=lon)
+
+
+@app.get("/api/location/detect")
+def detect_location_endpoint():
+    return detect_ip_location()
+
+
+# ============================================================
+# 5. WEATHER & AGRO-RISK ENDPOINT
 # ============================================================
 
 @app.get("/api/weather")
 def get_weather(
-    location: str = Query("Warangal,IN"),
+    location: Optional[str] = Query("Warangal, Telangana"),
     lat: Optional[float] = Query(None),
     lon: Optional[float] = Query(None),
     crop: Optional[str] = Query("Tomato")
@@ -536,17 +564,32 @@ def chat_with_ai_assistant(req: AssistantRequest):
 
 
 # ============================================================
-# 7. FARMER NEWS ENDPOINT
+# 7. REAL-TIME AGRICULTURAL MARKET NEWS ENDPOINT
 # ============================================================
 
 @app.get("/api/news")
 def fetch_news(
     category: Optional[str] = Query("All"),
-    language: str = Query("en"),
+    filter: Optional[str] = Query("All", alias="filter_type"),
+    filter_type: Optional[str] = Query(None),
     search: Optional[str] = Query(None),
-    limit: int = Query(20, ge=1, le=50)
+    location: Optional[str] = Query(None),
+    language: str = Query("en"),
+    limit: int = Query(25, ge=1, le=50),
+    refresh: bool = Query(False, alias="force_refresh"),
+    force_refresh: bool = Query(False)
 ):
-    return get_farmer_news(category=category, language=language, search=search, limit=limit)
+    filt = filter_type or filter or "All"
+    refr = refresh or force_refresh
+    return fetch_live_agri_news(
+        category=category,
+        filter_type=filt,
+        search=search,
+        location=location,
+        language=language,
+        limit=limit,
+        force_refresh=refr
+    )
 
 
 # ============================================================

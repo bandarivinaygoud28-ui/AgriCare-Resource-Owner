@@ -83,21 +83,52 @@ export interface MarketHistoryResponse {
   history: MarketHistoryPoint[];
 }
 
+export interface LocationSearchResult {
+  name: string;
+  district?: string;
+  state?: string;
+  country?: string;
+  lat: number;
+  lon: number;
+  formatted_location: string;
+  display_name: string;
+  source?: string;
+}
+
 export interface WeatherData {
   location: string;
+  coordinates?: {
+    lat: number;
+    lon: number;
+  };
+  source?: string;
+  is_live?: boolean;
   current: {
     temp: number;
     feels_like: number;
     humidity: number;
     wind_speed: number;
+    precipitation?: number;
+    cloud_cover?: number;
     condition: string;
     description: string;
+    updated_at?: string;
+    updated_at_iso?: string;
+    foliar_wetness?: {
+      status: string;
+      description: string;
+    };
+    spraying_drift?: {
+      status: string;
+      description: string;
+    };
   };
   agricultural_advisory: {
     disease_risk: string;
     disease_risk_factors: string[];
     spraying_advisory: string;
     suitable_for_spraying: boolean;
+    crop?: string;
   };
   forecast: Array<{
     date: string;
@@ -124,14 +155,27 @@ export interface FarmerProfile {
 }
 
 export interface NewsArticle {
-  id: number;
+  id: string | number;
   category: string;
   title: string;
   summary: string;
   content: string;
   source: string;
   date: string;
+  url?: string;
   image_url: string;
+  location_tag?: string;
+  crop?: string;
+  published_raw?: string;
+}
+
+export interface NewsResponse {
+  success: boolean;
+  articles: NewsArticle[];
+  count: number;
+  last_updated: string;
+  source: string;
+  is_live: boolean;
 }
 
 export interface FarmResource {
